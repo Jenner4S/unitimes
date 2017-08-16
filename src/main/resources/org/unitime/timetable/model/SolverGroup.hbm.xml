@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+<hibernate-mapping package="org.unitime.timetable.model">
+    <class name="SolverGroup" table="solver_group">
+        <cache include="non-lazy" usage="transactional"/>
+        <id
+            name="uniqueId"
+            column="uniqueid"
+            type="java.lang.Long">
+            <generator class="org.unitime.commons.hibernate.id.UniqueIdGenerator">
+                <param name="sequence">solver_group_seq</param>
+            </generator>
+        </id>
+
+        <property
+            name="name"
+            column="name"
+            type="string"
+            not-null="true"
+            length="50"/>
+
+        <property
+            name="abbv"
+            column="abbv"
+            type="string"
+            not-null="true"
+            length="10"/>
+
+        <many-to-one
+            name="session"
+            class="Session"
+            column="session_id"
+            not-null="true"
+            foreign-key="fk_solver_group_session"/>
+
+        <set name="timetableManagers" table="solver_gr_to_tt_mgr">
+            <cache include="non-lazy" usage="transactional"/>
+            <key column="solver_group_id"/>
+            <many-to-many
+                class="TimetableManager"
+                column="timetable_mgr_id"
+                foreign-key="fk_solver_gr_to_tt_mgr_ttmgr"/>
+
+        </set>
+        <set
+            name="departments"
+            table="department"
+            cascade="none"
+            lazy="true"
+            inverse="true">
+
+            <key column="solver_group_id"/>
+            <one-to-many class="Department"/>
+        </set>
+
+        <set
+            name="solutions"
+            table="solution"
+            inverse="true"
+            lazy="true"
+            cascade="all-delete-orphan">
+
+            <cache include="non-lazy" usage="transactional"/>
+            <key column="owner_id"/>
+            <one-to-many class="Solution"/>
+        </set>
+
+    </class>
+</hibernate-mapping>

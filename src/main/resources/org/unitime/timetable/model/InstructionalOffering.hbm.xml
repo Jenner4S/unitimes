@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+<hibernate-mapping package="org.unitime.timetable.model">
+    <class name="InstructionalOffering" table="instructional_offering">
+        <cache include="non-lazy" usage="transactional"/>
+        <id
+            name="uniqueId"
+            column="uniqueid"
+            type="java.lang.Long"
+            length="20">
+
+            <generator class="org.unitime.commons.hibernate.id.UniqueIdGenerator">
+                <param name="sequence">instr_offr_seq</param>
+            </generator>
+        </id>
+
+        <property
+            name="instrOfferingPermId"
+            column="instr_offering_perm_id"
+            type="java.lang.Integer"
+            not-null="true"
+            length="10"/>
+
+        <property
+            name="notOffered"
+            column="not_offered"
+            type="java.lang.Boolean"
+            not-null="true"/>
+
+        <property
+            name="demand"
+            type="java.lang.Integer"
+            formula="(      select sum( co.lastlike_demand +       (case when cox.lastlike_demand is null then 0 else cox.lastlike_demand end))      from %SCHEMA%.course_offering co left outer join %SCHEMA%.course_offering cox on co.demand_offering_id=cox.uniqueid       where co.instr_offr_id = uniqueid)"/>
+
+		<!-- 
+        <property
+            name="enrollment"
+            type="java.lang.Integer"
+            formula="(      select sum( co.enrollment +       (case when cox.enrollment is null then 0 else cox.enrollment end))      from %SCHEMA%.course_offering co left outer join %SCHEMA%.course_offering cox on co.demand_offering_id=cox.uniqueid       where co.instr_offr_id = uniqueid)"/>
+        -->
+
+         <property
+            name="enrollment"
+            type="java.lang.Integer"
+            lazy="true"
+            formula="(select count(distinct e.student_id) from %SCHEMA%.student_class_enrl e inner join %SCHEMA%.course_offering co on co.uniqueid = e.course_offering_id where co.instr_offr_id = uniqueid)"/>
+
+        <property
+            name="limit"
+            type="java.lang.Integer"
+            formula=" ( select sum(ioc.config_limit) from %SCHEMA%.instr_offering_config ioc where ioc.instr_offr_id = uniqueid ) "/>
+
+        <many-to-one
+            name="session"
+            class="Session"
+            column="session_id"
+            not-null="true"
+            foreign-key="fk_instr_offr_session"/>
+
+        <set
+            name="courseOfferings"
+            inverse="true"
+            lazy="true"
+            cascade="all-delete-orphan"
+            table="course_offering"
+            order-by="subject_area_id,course_nbr">
+
+            <cache include="non-lazy" usage="transactional"/>
+            <key column="instr_offr_id"/>
+            <one-to-many class="CourseOffering"/>
+        </set>
+
+        <set
+            name="instrOfferingConfigs"
+            inverse="true"
+            lazy="true"
+            cascade="all-delete-orphan"
+            table="instr_offering_config">
+
+            <cache include="non-lazy" usage="transactional"/>
+            <key column="instr_offr_id"/>
+            <one-to-many class="InstrOfferingConfig"/>
+        </set>
+
+        <set
+            name="reservations"
+            table="reservation"
+            inverse="true"
+            lazy="true">
+
+            <cache include="non-lazy" usage="transactional"/>
+            <key column="offering_id"/>
+            <one-to-many class="Reservation"/>
+        </set>
+
+		<!-- 
+        <set
+            name="creditConfigs"
+            inverse="true"
+            lazy="true"
+            cascade="all-delete-orphan"
+            table="course_credit_unit_config">
+
+            <cache include="non-lazy" usage="transactional"/>
+            <key column="instr_offr_id"/>
+            <one-to-many class="CourseCreditUnitConfig"/>
+        </set>
+         -->
+
+        <property
+            name="uniqueIdRolledForwardFrom"
+            column="uid_rolled_fwd_from"
+            type="java.lang.Long"
+            not-null="false"
+            length="20"/>
+
+        <property
+            name="externalUniqueId"
+            column="external_uid"
+            type="java.lang.String"
+            not-null="false"
+            length="40"/>
+            
+        <property
+            name="byReservationOnly"
+            column="req_reservation"
+            type="java.lang.Boolean"
+            not-null="true"/>
+
+        <set
+            name="offeringCoordinators"
+            lazy="true"
+            table="offering_coordinator"
+            inverse="true">
+            
+            <cache include="non-lazy" usage="transactional"/>
+            <key column="offering_id"/>
+            <one-to-many class="OfferingCoordinator"/>
+        </set>
+
+		<property
+			name="lastWeekToEnroll"
+			column="wk_enroll"
+			type="java.lang.Integer"
+			not-null="false"
+		/>
+
+		<property
+			name="lastWeekToChange"
+			column="wk_change"
+			type="java.lang.Integer"
+			not-null="false"
+		/>
+
+		<property
+			name="lastWeekToDrop"
+			column="wk_drop"
+			type="java.lang.Integer"
+			not-null="false"
+		/>
+		
+		<set
+			name="teachingRequests"
+			cascade="all"
+			lazy="true"
+			table="teaching_request"
+			inverse="true">
+			<cache include="non-lazy" usage="transactional"/>
+			<key column="offering_id" foreign-key="fk_teachreq_offering"/>
+			<one-to-many class="TeachingRequest"/>
+		</set>
+
+        <property
+        	name="notes"
+            column="notes"
+            type="java.lang.String"
+            not-null="false"
+            length="2000"/>
+            
+		<property
+            name="snapshotLimit"
+            column="snapshot_limit"
+            type="java.lang.Integer"
+            length="10"/>
+
+		<property
+            name="snapshotLimitDate"
+            column="snapshot_limit_date"
+            type="java.sql.Timestamp"
+            not-null="false"/>
+            
+	</class>
+	
+	
+</hibernate-mapping>

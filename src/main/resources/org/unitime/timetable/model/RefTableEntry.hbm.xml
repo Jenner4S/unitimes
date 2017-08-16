@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+<hibernate-mapping package="org.unitime.timetable.model">
+    <class name="RefTableEntry" abstract="true">
+        <cache usage="transactional"/>
+        <id
+            name="uniqueId"
+            column="uniqueid"
+            type="java.lang.Long">
+            <generator class="org.unitime.commons.hibernate.id.UniqueIdGenerator">
+                <param name="sequence">ref_table_seq</param>
+            </generator>
+        </id>
+
+        <property
+            name="reference"
+            column="reference"
+            type="string"
+            not-null="true"
+            length="20"
+            unique="true"/>
+
+        <property
+            name="label"
+            column="label"
+            type="string"
+            not-null="false"
+            length="60"
+            unique="true"/>
+
+        <union-subclass
+            name="DistributionType"
+            table="distribution_type"
+            abstract="false">
+            <property
+                name="sequencingRequired"
+                column="sequencing_required"
+                type="boolean"
+                not-null="true"/>
+
+            <property
+                name="requirementId"
+                column="req_id"
+                type="java.lang.Integer"
+                not-null="true"/>
+
+            <property
+                name="allowedPref"
+                column="allowed_pref"
+                type="java.lang.String"
+                length="10"/>
+
+            <property
+                name="descr"
+                column="description"
+                type="java.lang.String"
+                length="2048"/>
+
+            <property
+                name="abbreviation"
+                column="abbreviation"
+                type="java.lang.String"/>
+
+            <property
+                name="instructorPref"
+                column="instructor_pref"
+                type="java.lang.Boolean"
+                not-null="true"/>
+
+            <property
+                name="examPref"
+                column="exam_pref"
+                type="java.lang.Boolean"
+                not-null="true"/>
+
+            <property
+                name="visible"
+                column="visible"
+                type="java.lang.Boolean"
+                not-null="true"/>
+
+            <set
+                name="departments"
+                table="dist_type_dept"
+                inverse="false">
+                <cache include="non-lazy" usage="transactional"/>
+                <key column="dist_type_id"/>
+                <many-to-many
+                    class="Department"
+                    column="dept_id"
+                    foreign-key="fk_dist_type_dept_dept"/>
+
+            </set>
+
+        </union-subclass>
+
+        <union-subclass
+            name="DemandOfferingType"
+            table="demand_offr_type"
+            abstract="false"/>
+
+        <union-subclass
+            name="OfferingConsentType"
+            table="offr_consent_type"
+            abstract="false">
+            <property
+                name="abbv"
+                column="abbv"
+                type="java.lang.String"
+                not-null="true"
+                length="20"/>
+
+        </union-subclass>
+
+        <union-subclass
+            name="CourseCreditFormat"
+            table="crse_credit_format"
+            abstract="false">
+            <property
+                name="abbreviation"
+                column="abbreviation"
+                type="java.lang.String"
+                length="10"/>
+
+        </union-subclass>
+
+        <union-subclass
+            name="CourseCreditType"
+            table="course_credit_type"
+            abstract="false">
+            <property
+                name="legacyCourseMasterCode"
+                column="legacy_crse_master_code"
+                type="java.lang.String"
+                length="10"/>
+
+            <property
+                name="abbreviation"
+                column="abbreviation"
+                type="java.lang.String"
+                length="10"/>
+
+        </union-subclass>
+
+        <union-subclass
+            name="CourseCreditUnitType"
+            table="course_credit_unit_type"
+            abstract="false">
+            <property
+                name="abbreviation"
+                column="abbreviation"
+                type="java.lang.String"/>
+
+        </union-subclass>
+
+        <union-subclass
+            name="PositionType"
+            table="position_type"
+            abstract="false">
+            <property
+                name="sortOrder"
+                column="sort_order"
+                type="java.lang.Integer"
+                not-null="true"/>
+
+        </union-subclass>
+
+        <union-subclass
+            name="DepartmentStatusType"
+            table="dept_status_type"
+            abstract="false">
+            <property
+                name="status"
+                column="status"
+                type="java.lang.Integer"
+                not-null="true"/>
+
+            <property
+                name="apply"
+                column="apply"
+                type="java.lang.Integer"
+                not-null="true"/>
+
+            <property
+                name="ord"
+                column="ord"
+                type="java.lang.Integer"
+                not-null="true"/>
+
+        </union-subclass>
+
+        <union-subclass
+            name="RoomType"
+            table="room_type"
+            abstract="false">
+            <property
+                name="ord"
+                column="ord"
+                type="java.lang.Integer"
+                not-null="true"/>
+
+            <property
+                name="room"
+                column="is_room"
+                type="java.lang.Boolean"
+                not-null="true"/>
+
+        </union-subclass>
+        
+        <union-subclass
+        	name="StudentSectioningStatus"
+        	table="sectioning_status"
+        	abstract="false">
+            <property
+                name="status"
+                column="status"
+                type="java.lang.Integer"
+                not-null="true"/>
+
+            <property
+                name="message"
+                column="message"
+                type="java.lang.String"
+                not-null="false"
+                length="200"/>
+
+	        <set
+    	        name="types"
+            	table="sectioning_course_types"
+            	lazy="true">
+            	<cache include="non-lazy" usage="transactional"/>
+            	<key column="sectioning_status_id" foreign-key="fk_sect_course_status"/>
+            	<many-to-many
+	                class="CourseType"
+                	column="course_type_id"
+                	foreign-key="fk_sect_course_type"/>
+        </set>
+
+        </union-subclass>
+        
+        <union-subclass name="ExamType"
+        	table="exam_type"
+        	abstract="false">
+            <property
+                name="type"
+                column="xtype"
+                type="java.lang.Integer"
+                not-null="true"/>
+            <property
+                name="highlightInEvents"
+                column="events"
+                type="java.lang.Boolean"
+                not-null="true"/>
+        </union-subclass>
+
+        <union-subclass name="RoomFeatureType"
+        	table="feature_type"
+        	abstract="false">
+            <property
+                name="showInEventManagement"
+                column="events"
+                type="java.lang.Boolean"
+                not-null="true"/>
+        </union-subclass>
+
+        <union-subclass name="CourseType"
+        	table="course_type"
+        	abstract="false">
+        </union-subclass>
+        
+        <union-subclass name="ClassDurationType" table="duration_type" abstract="false">
+        	<property
+        		name="abbreviation"
+        		column="abbreviation"
+        		type="string"
+        		not-null="true"
+        		length="20"/>
+        		
+        	<property
+        		name="implementation"
+        		column="implementation"
+        		type="string"
+        		not-null="true"
+        		length="255"/>
+
+        	<property
+        		name="parameter"
+        		column="parameter"
+        		type="string"
+        		not-null="false"
+        		length="200"/>
+
+        	<property
+        		name="visible"
+        		column="visible"
+        		type="boolean"/>
+        </union-subclass>
+        
+        <union-subclass name="AttachmentType" table="attachment_type" abstract="false">
+        	<property
+        		name="abbreviation"
+        		column="abbreviation"
+        		type="string"
+        		not-null="true"
+        		length="20"/>
+
+        	<property
+                name="visibility"
+                column="visibility"
+                type="java.lang.Integer"
+                not-null="true"/>
+        </union-subclass>
+        
+        <union-subclass name="InstructionalMethod" table="instructional_method" abstract="false">
+        	<property
+        		name="visible"
+        		column="visible"
+        		type="boolean"/>
+        </union-subclass>
+
+        <union-subclass name="InstructorAttributeType"
+        	table="attribute_type"
+        	abstract="false">
+            <property
+                name="conjunctive"
+                column="conjunctive"
+                type="java.lang.Boolean"
+                not-null="true"/>
+            <property
+                name="required"
+                column="required"
+                type="java.lang.Boolean"
+                not-null="true"/>
+        </union-subclass>
+        
+        <union-subclass name="TeachingResponsibility" table="teaching_responsibility" abstract="false">
+            <property
+                name="coordinator"
+                column="coordinator"
+                type="java.lang.Boolean"
+                not-null="true"/>
+            <property
+                name="instructor"
+                column="instructor"
+                type="java.lang.Boolean"
+                not-null="true"/>
+			<property
+        		name="abbreviation"
+        		column="abbreviation"
+        		type="string"
+        		not-null="false"
+        		length="40"/>
+			<property
+                name="options"
+                column="options"
+                type="java.lang.Integer"
+                not-null="true"/>
+        </union-subclass>
+    </class>
+</hibernate-mapping>

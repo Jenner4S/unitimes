@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+<hibernate-mapping package="org.unitime.timetable.model">
+    <class name="EventNote" table="event_note">
+        <cache include="non-lazy" usage="transactional"/>
+        <id
+            name="uniqueId"
+            column="uniqueid"
+            type="java.lang.Long">
+            <generator class="org.unitime.commons.hibernate.id.UniqueIdGenerator">
+                <param name="sequence">pref_group_seq</param>
+            </generator>
+        </id>
+
+        <many-to-one
+            name="event"
+            class="Event"
+            column="event_id"
+            foreign-key="fk_event_note_event"
+            not-null="true"/>
+
+        <property
+            name="noteType"
+            column="note_type"
+            type="java.lang.Integer"
+            length="10"
+            not-null="true"/>
+
+        <property
+            name="textNote"
+            column="text_note"
+            type="java.lang.String"
+            length="1000"
+            not-null="false"/>
+
+        <property
+            name="timeStamp"
+            column="time_stamp"
+            type="java.util.Date"
+            not-null="true"/>
+
+        <property
+            name="user"
+            column="uname"
+            type="java.lang.String"
+            length="100"
+            not-null="false"/>
+            
+		<property
+            name="userId"
+            column="user_id"
+            type="java.lang.String"
+            not-null="false"
+            length="40"/>
+
+        <property
+            name="meetings"
+            column="meetings"
+            type="java.lang.String"
+            not-null="false"/>
+
+        <property
+            name="attachedFile"
+            column="attached_file"
+            type="byte[]"
+            not-null="false"
+            lazy="true"/>
+            
+        <property
+            name="attachedName"
+            column="attached_name"
+            type="java.lang.String"
+            length="260"
+            not-null="false"/>
+
+        <property
+            name="attachedContentType"
+            column="attached_content"
+            type="java.lang.String"
+            length="260"
+            not-null="false"/>
+
+		<set
+			name="affectedMeetings"
+			table="event_note_meeting"
+			inverse="false"
+	        lazy="true">
+	        
+	        <cache include="non-lazy" usage="transactional"/>
+	        <key column="note_id" foreign-key="fk_event_note_note"/>
+	        <many-to-many class="Meeting" column="meeting_id" foreign-key="fk_event_note_mtg"/>
+	    </set>
+
+    </class>
+</hibernate-mapping>

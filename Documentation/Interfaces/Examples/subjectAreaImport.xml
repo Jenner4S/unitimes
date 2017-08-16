@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE subjectAreas PUBLIC "-//UniTime//DTD University Course Timetabling/EN" "http://www.unitime.org/interface/SubjectArea.dtd">
+
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+
+	<!-- subjectArea ==> Required:  abbreviation, shortTitle, longTitle, department
+	                     Optional:  externalId, schedBookOnly, pseudoSubjArea
+	     
+	     schedBookOnly = true or false {true ==> Display in the public schedule of classes}.
+	     pseudoSubjArea = true or false  {true ==> Subject area that offers no courses.  Used for display in the public schedule of classes}.
+	-->
+<subjectAreas campus="puWestLafayetteTrdtn" term="Fal" year="2007">
+	<!-- Since UniTime 3.4, only title is needed (instead of shortTitle and longTitle). If title is not present, longTitle is used instead. -->
+	<!-- Attributes schedBookOnly and pseudoSubjArea are deprecated in UniTime 3.4.  -->
+	<subjectArea externalId="19O0S71C0WD4X1GODPVN" abbreviation="A&amp;AE" title="Aeronautics And Astronautics Engineering" schedBookOnly="false" pseudoSubjArea="false" department="1282"/>
+	<subjectArea externalId="19O0K81C12O4L1GODPXO" abbreviation="G S" title="General Studies-Lafayette" schedBookOnly="false" pseudoSubjArea="false" department="1357"/>
+  	<subjectArea externalId="19O0SB1C0WHAY1GODPVO" abbreviation="A&amp;D" title="Art And Design" schedBookOnly="false" pseudoSubjArea="false" department="1352"/>
+  	<subjectArea externalId="19O0G61C101HU1GODPXP" abbreviation="MSE" title="Materials Engineering" schedBookOnly="false" pseudoSubjArea="false" department="1289"/>
+</subjectAreas>

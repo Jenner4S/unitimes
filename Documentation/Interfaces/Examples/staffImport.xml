@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE staff PUBLIC "-//UniTime//UniTime Staff Import DTD/EN" "http://www.unitime.org/interface/Staff.dtd">
+
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+
+	<!-- staffMember ==> Required:  externalId, firstName, lastName, positionType, department
+	                     Optional:  middleName, email, acadTitle
+	-->
+<staff campus="PWL" term="Fal" year="2010">
+	<!--
+		Since UniTime 3.3.165 positionCode attribute (that has to be translated through position_code_to_type table) was replaced by positionType attribute
+		that refers directly to position_type table.
+		Attribute acadTitle (academic title) was added in UniTime 3.5.172
+	 -->
+	<staffMember externalId="100" firstName="Joe" middleName="S" lastName="Doe" acadTitle="Dr." positionType="ASSOC_PROF" department="0101" email="doe@unitime.org"/>
+	<staffMember externalId="101" firstName="George" lastName="Newman" acadTitle="Prof." positionType="PROF" department="0101"/>
+	<staffMember externalId="102" firstName="John" middleName="William" lastName="Smith" acadTitle="Prof." positionType="PROF" department="0101"/>
+	<staffMember externalId="103" firstName="Josef" lastName="Nowak" positionType="INSTRUCTOR" department="0101"/>
+</staff>

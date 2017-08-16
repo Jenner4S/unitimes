@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+<hibernate-mapping package="org.unitime.timetable.model">
+    <class name="StudentClassEnrollment" table="student_class_enrl">
+        <cache include="non-lazy" usage="transactional"/>
+        <id
+            name="uniqueId"
+            column="uniqueid"
+            type="java.lang.Long">
+            <generator class="org.unitime.commons.hibernate.id.UniqueIdGenerator">
+                <param name="sequence">pref_group_seq</param>
+            </generator>
+        </id>
+
+        <many-to-one
+            name="student"
+            class="Student"
+            column="student_id"
+            not-null="true"
+            foreign-key="fk_student_class_enrl_student"/>
+
+        <many-to-one
+            name="courseRequest"
+            class="CourseRequest"
+            column="course_request_id"
+            foreign-key="fk_student_class_enrl_request"
+            not-null="false"/>
+
+        <many-to-one
+            name="courseOffering"
+            class="CourseOffering"
+            column="course_offering_id"
+            foreign-key="fk_student_class_enrl_course"
+            not-null="false"/>
+
+        <many-to-one
+            name="clazz"
+            class="Class_"
+            column="class_id"
+            not-null="true"
+            foreign-key="fk_student_class_enrl_class"/>
+
+        <property
+            name="timestamp"
+            column="timestamp"
+            type="java.util.Date"
+            not-null="true"/>
+            
+        <property
+            name="approvedDate"
+            column="approved_date"
+            type="java.util.Date"
+            not-null="false"/>
+
+        <property
+            name="approvedBy"
+            column="approved_by"
+            type="java.lang.String"
+            length="40"
+            not-null="false"/>
+
+        <property
+            name="changedBy"
+            column="changed_by"
+            type="java.lang.String"
+            not-null="false"
+            length="40"/>
+
+    </class>
+</hibernate-mapping>

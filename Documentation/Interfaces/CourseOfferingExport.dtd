@@ -1,0 +1,161 @@
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+
+<!ELEMENT class ( class*, date*, time?, (room|location|instructor|meeting|meetsWith)* ) >
+<!-- displayInScheduleBook has been deprecated in UniTime 3.4, use studentScheduling instead -->
+<!ATTLIST class displayInScheduleBook ( false | true ) #IMPLIED >
+<!-- studentScheduling was introduced in UniTime 3.4, if false class appears like it has zero limit in (both batch and online) student scheduling -->
+<!ATTLIST class studentScheduling ( false | true ) #IMPLIED >
+<!ATTLIST class id CDATA #IMPLIED >
+<!ATTLIST class limit NMTOKEN #IMPLIED >
+<!ATTLIST class scheduleNote CDATA #IMPLIED >
+<!ATTLIST class suffix CDATA #REQUIRED >
+<!ATTLIST class type CDATA #REQUIRED >
+<!-- cancelled was introduced in UniTime 4.1 -->
+<!ATTLIST class cancelled ( false | true ) #IMPLIED >
+
+<!ELEMENT config ( (subpart|class)* ) >
+<!ATTLIST config limit NMTOKEN #REQUIRED >
+<!ATTLIST config name CDATA #REQUIRED >
+<!-- durationType was introduced in UniTime 4.1, if not present the class duration type defaults to minutes per week -->
+<!-- the value of this field has to match ClassDurationType.reference (one of MIN_PER_WEEK, SEMESTER_MIN, SEMESTER_HRS, MEETING_MIN, MEETING_HRS )-->
+<!ATTLIST config durationType CDATA #IMPLIED >
+<!-- instructionalMethod was introduced in UniTime 4.1, if not present the instructional method will not be set -->
+<!-- the value of this field has to match InstructionalMethod.reference -->
+<!ATTLIST config instructionalMethod CDATA #IMPLIED >
+
+<!ELEMENT consent EMPTY >
+<!ATTLIST consent type CDATA #REQUIRED >
+
+<!ELEMENT course ( consent?, courseCredit?, class*) >
+<!ATTLIST course id CDATA #IMPLIED >
+<!ATTLIST course controlling ( false | true ) #IMPLIED >
+<!ATTLIST course courseNbr NMTOKEN #REQUIRED >
+<!ATTLIST course scheduleBookNote CDATA #IMPLIED >
+<!ATTLIST course subject CDATA #REQUIRED >
+<!ATTLIST course title CDATA #IMPLIED > 
+<!ATTLIST course reserved NMTOKEN #IMPLIED >
+
+<!ELEMENT courseCredit EMPTY >
+<!ATTLIST courseCredit creditFormat ( arrangeHours | fixedUnit | variableMinMax | variableRange ) #REQUIRED >
+<!ATTLIST courseCredit creditType ( collegiate | equivalent | mastersCredit | phdThesisCredit | continuingEdUnits ) #REQUIRED >
+<!ATTLIST courseCredit creditUnitType CDATA #REQUIRED >
+<!ATTLIST courseCredit fixedCredit CDATA #IMPLIED >
+<!ATTLIST courseCredit fractionalCreditAllowed ( false | true ) #IMPLIED >
+<!ATTLIST courseCredit maximumCredit CDATA #IMPLIED >
+<!ATTLIST courseCredit minimumCredit CDATA #IMPLIED >
+
+<!-- designatorRequired toggle is deprecated since UniTime 3.4 -->
+<!ELEMENT designatorRequired EMPTY >
+
+<!ELEMENT instructor EMPTY >
+<!ATTLIST instructor fname CDATA #IMPLIED >
+<!ATTLIST instructor id NMTOKEN #REQUIRED >
+<!ATTLIST instructor lead ( false | true ) #IMPLIED >
+<!ATTLIST instructor lname CDATA #IMPLIED >
+<!ATTLIST instructor mname CDATA #IMPLIED >
+<!ATTLIST instructor title CDATA #IMPLIED >
+<!ATTLIST instructor share NMTOKEN #IMPLIED >
+
+<!ELEMENT offering ( designatorRequired?, courseCredit?, course+, config*, exam* ) >
+<!ATTLIST offering action CDATA #IMPLIED >
+<!ATTLIST offering id NMTOKEN #REQUIRED >
+<!ATTLIST offering offered  ( false | true ) #REQUIRED >
+
+<!ELEMENT offerings ( offering* ) >
+<!ATTLIST offerings campus NMTOKEN #REQUIRED >
+<!ATTLIST offerings term NMTOKEN #REQUIRED >
+<!ATTLIST offerings year NMTOKEN #REQUIRED >
+<!ATTLIST offerings dateFormat CDATA #IMPLIED >
+<!ATTLIST offerings timeFormat CDATA #IMPLIED >
+<!ATTLIST offerings useMeetsWith ( false | true ) #IMPLIED >
+<!ATTLIST offerings created CDATA #IMPLIED >
+<!ATTLIST offerings incremental ( false | true ) "false" >
+<!ATTLIST offerings includeExams ( none | final | midterm | all ) "none" >
+
+<!ELEMENT room EMPTY >
+<!ATTLIST room building CDATA #REQUIRED >
+<!ATTLIST room id CDATA #IMPLIED >
+<!ATTLIST room roomNbr CDATA #REQUIRED >
+
+<!ELEMENT location EMPTY >
+<!ATTLIST location name CDATA #REQUIRED >
+
+<!ELEMENT subpart ( subpartCredit*, subpart* ) >
+<!ATTLIST subpart minPerWeek NMTOKEN #REQUIRED >
+<!ATTLIST subpart suffix CDATA #IMPLIED >
+<!ATTLIST subpart type CDATA #REQUIRED >
+
+<!ELEMENT subpartCredit EMPTY >
+<!ATTLIST subpartCredit creditFormat ( arrangeHours | fixedUnit | variableMinMax | variableRange ) #REQUIRED >
+<!ATTLIST subpartCredit creditType ( collegiate | equivalent | mastersCredit | phdThesisCredit ) #REQUIRED >
+<!ATTLIST subpartCredit creditUnitType CDATA #REQUIRED >
+<!ATTLIST subpartCredit fixedCredit CDATA #IMPLIED >
+<!ATTLIST subpartCredit fractionalCreditAllowed ( false | true ) #IMPLIED >
+<!ATTLIST subpartCredit maximumCredit CDATA #IMPLIED >
+<!ATTLIST subpartCredit minimumCredit CDATA #IMPLIED >
+
+<!ELEMENT time EMPTY >
+<!ATTLIST time days NMTOKEN #REQUIRED >
+<!ATTLIST time endTime NMTOKEN #REQUIRED >
+<!ATTLIST time startTime NMTOKEN #REQUIRED >
+<!ATTLIST time timePattern CDATA #IMPLIED >
+
+<!ELEMENT date EMPTY >
+<!ATTLIST date endDate CDATA #REQUIRED >
+<!ATTLIST date startDate CDATA #REQUIRED >
+
+<!ELEMENT exam ( (class|course)*, instructor*, (period, (room|location)*)?) >
+<!ATTLIST exam id CDATA #IMPLIED >
+<!ATTLIST exam name CDATA #REQUIRED >
+<!ATTLIST exam size NMTOKEN #IMPLIED >
+<!ATTLIST exam note CDATA #IMPLIED >
+<!ATTLIST exam length NMTOKEN #REQUIRED >
+<!ATTLIST exam seatingType ( normal | exam) #IMPLIED >
+<!ATTLIST exam type CDATA #REQUIRED >
+<!ATTLIST exam printOffset NMTOKEN #IMPLIED >
+<!ATTLIST exam note CDATA #IMPLIED >
+
+<!ELEMENT period EMPTY >
+<!ATTLIST period date CDATA #REQUIRED >
+<!ATTLIST period startTime NMTOKEN #REQUIRED >
+<!ATTLIST period endTime NMTOKEN #REQUIRED >
+
+<!ELEMENT meeting EMPTY >
+<!ATTLIST meeting endDate CDATA #IMPLIED >
+<!ATTLIST meeting startDate CDATA #IMPLIED >
+<!ATTLIST meeting startTime NMTOKEN #REQUIRED >
+<!ATTLIST meeting endTime NMTOKEN #REQUIRED >
+<!ATTLIST meeting days CDATA #REQUIRED >
+<!ATTLIST meeting building CDATA #IMPLIED >
+<!ATTLIST meeting room CDATA #IMPLIED >
+<!ATTLIST meeting location CDATA #IMPLIED >
+
+<!ELEMENT meetsWith EMPTY >
+<!ATTLIST meetsWith id CDATA #REQUIRED >
+
+<!ELEMENT exams ( exam* ) >
+<!ATTLIST exams campus NMTOKEN #REQUIRED >
+<!ATTLIST exams term NMTOKEN #REQUIRED >
+<!ATTLIST exams year NMTOKEN #REQUIRED >
+<!ATTLIST exams dateFormat CDATA #IMPLIED >
+<!ATTLIST exams timeFormat CDATA #IMPLIED >
+<!ATTLIST exams created CDATA #IMPLIED >
+<!ATTLIST exams type ( all | final | midterm) #REQUIRED >

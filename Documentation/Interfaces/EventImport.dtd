@@ -1,0 +1,47 @@
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+
+<!ELEMENT event EMPTY >
+<!ATTLIST event date CDATA #REQUIRED >
+<!ATTLIST event endTime NMTOKEN #REQUIRED >
+<!ATTLIST event name CDATA #IMPLIED >
+<!ATTLIST event startTime NMTOKEN #REQUIRED >
+<!ATTLIST event type NMTOKEN #REQUIRED >
+
+<!ELEMENT excludeType ( #PCDATA ) >
+
+<!ELEMENT request ( excludeType* ) >
+<!ATTLIST request building NMTOKEN #REQUIRED >
+<!ATTLIST request endDate CDATA #IMPLIED >
+<!ATTLIST request excludeTypes CDATA #IMPLIED >
+<!ATTLIST request externalId CDATA #IMPLIED >
+<!ATTLIST request roomNbr NMTOKEN #REQUIRED >
+<!ATTLIST request startDate CDATA #IMPLIED >
+
+<!ELEMENT requests ( request+ ) >
+
+<!ELEMENT response ( room ) >
+
+<!ELEMENT room ( event+ ) >
+<!ATTLIST room building NMTOKEN #REQUIRED >
+<!ATTLIST room externalId CDATA #IMPLIED >
+<!ATTLIST room roomNbr NMTOKEN #REQUIRED >
+
+

@@ -1,0 +1,39 @@
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+
+<!ELEMENT subjectArea EMPTY >
+<!ATTLIST subjectArea abbreviation CDATA #REQUIRED >
+<!ATTLIST subjectArea department CDATA #REQUIRED >
+<!ATTLIST subjectArea externalId CDATA #IMPLIED >
+<!ATTLIST subjectArea title CDATA #REQUIRED >
+<!-- deprecated in UniTime 3.4 -->
+<!ATTLIST subjectArea longTitle CDATA #IMPLIED >
+<!-- deprecated in UniTime 3.4 -->
+<!ATTLIST subjectArea pseudoSubjArea ( false | False | true | True ) #IMPLIED >
+<!-- deprecated in UniTime 3.4 -->
+<!ATTLIST subjectArea schedBookOnly ( false | False | true | True ) #IMPLIED >
+<!-- deprecated in UniTime 3.4 -->
+<!ATTLIST subjectArea shortTitle CDATA #IMPLIED >
+
+<!ELEMENT subjectAreas ( subjectArea+ ) >
+<!ATTLIST subjectAreas campus CDATA #REQUIRED >
+<!ATTLIST subjectAreas term CDATA #REQUIRED >
+<!ATTLIST subjectAreas year CDATA #REQUIRED >
+<!ATTLIST subjectAreas created CDATA #IMPLIED >

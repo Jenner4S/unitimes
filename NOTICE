@@ -1,0 +1,435 @@
+Copyright 2015, The Apereo Foundation
+This project includes software developed by The Apereo Foundation.
+http://www.apereo.org/
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this software except in compliance with the License.
+You may obtain a copy of the License at:
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+===========================================================================
+
+This software originally granted to the Apereo Foundation by UniTime LLC.
+
+===========================================================================
+
+This project includes:
+
+AntLR Parser Generator (antlr-2.7.7.jar)
+	under BSD or BSD-style License
+	http://www.antlr.org/
+
+AOP alliance (aopalliance-1.0.jar)
+	under Public Domain
+	http://aopalliance.sourceforge.net
+
+Code Generation Library (cglib-3.1.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://cglib.sourceforge.net/
+
+Jackson-core (jackson-core-2.6.1.jar)
+	under Apache Software License (ASL), Version 2.0
+	https://github.com/FasterXML/jackson-core
+
+Gson (gson-2.3.1.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://code.google.com/p/google-gson/
+
+gwt-dev (gwt-dev-2.7.0.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.gwtproject.org/gwt-dev/
+
+gwt-servlet (gwt-servlet-2.7.0.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.gwtproject.org/gwt-servlet/
+
+gwt-user (gwt-user-2.7.0.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.gwtproject.org/gwt-user/
+
+Protocol Buffer Java API (protobuf-java-2.6.1.jar)
+	under BSD or BSD-style License
+	https://developers.google.com/protocol-buffers/
+
+iText, a Free Java-PDF library (itext-2.1.7.jar)
+	under GNU Lesser General Public License (LGPL), Version 2.1
+	http://www.lowagie.com/iText/
+
+Commons BeanUtils (commons-beanutils-1.8.0.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://commons.apache.org/beanutils/
+
+Commons Chain (commons-chain-1.2.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://commons.apache.org/chain/
+
+Apache Commons Configuration (commons-configuration-1.10.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://commons.apache.org/configuration/
+
+Commons DBCP (commons-dbcp-1.4.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://commons.apache.org/dbcp/
+
+Digester (commons-digester-1.8.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://jakarta.apache.org/commons/digester/
+
+Apache Commons FileUpload (commons-fileupload-1.3.1.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://commons.apache.org/proper/commons-fileupload/
+
+Commons IO (commons-io-1.4.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://commons.apache.org/io/
+
+Commons Lang (commons-lang-2.6.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://commons.apache.org/lang/
+
+Logging (commons-logging-1.0.4.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://jakarta.apache.org/commons/logging/
+
+Commons Pool (commons-pool-1.5.4.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://commons.apache.org/pool/
+
+Validator (commons-validator-1.3.1.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://jakarta.apache.org/commons/${pom.artifactId.substring(8)}/
+
+dom4j (dom4j-1.6.1.jar)
+	under BSD or BSD-style License
+	http://dom4j.org
+
+JavaBeans Activation Framework (JAF) (activation-1.1.jar)
+	under Common Development and Distribution License (CDDL), Version 1.0
+	http://java.sun.com/products/javabeans/jaf/index.jsp
+
+JavaMail API (compat) (mail-1.4.7.jar)
+	under Common Development and Distribution License (CDDL), Version 1.0
+	http://kenai.com/projects/javamail/mail
+
+Java Servlet API (javax.servlet-api-3.0.1.jar)
+	under Common Development and Distribution License (CDDL), Version 1.0
+	http://servlet-spec.java.net
+
+JavaServer Pages(TM) API (jsp-api-2.2.jar)
+	under Common Development and Distribution License (CDDL), Version 1.0
+	https://jsp.dev.java.net/jsp-api
+
+Bean Validation API (validation-api-1.0.0.GA.jar)
+	under Apache Software License (ASL), Version 2.0
+
+Joda-Time (joda-time-2.8.2.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.joda.org/joda-time/
+
+jstl (jstl-1.2.jar)
+	under Common Development and Distribution License (CDDL), Version 1.0
+
+Apache Log4j (log4j-1.2.17.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://logging.apache.org/log4j/1.2/
+
+biweekly (biweekly-0.4.3.jar)
+	under BSD or BSD-style License
+	http://sourceforge.net/p/biweekly
+
+Ehcache Core (ehcache-core-2.6.11.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://ehcache.org
+
+JGroups Replication (ehcache-jgroupsreplication-1.7.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://ehcache.org/ehcache-jgroupsreplication
+
+Struts Core (struts-core-1.3.10.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://struts.apache.org
+
+Struts Extras (struts-extras-1.3.10.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://struts.apache.org
+
+Struts Taglib (struts-taglib-1.3.10.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://struts.apache.org
+
+Struts Tiles (struts-tiles-1.3.10.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://struts.apache.org
+
+AspectJ runtime (aspectjrt-1.8.7.jar)
+	under Eclipse Public License (EPL), Version 1.0
+	http://www.aspectj.org
+
+FreeMarker (freemarker-2.3.23.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://freemarker.org/
+
+Core Hibernate O/RM functionality (hibernate-core-4.3.11.Final.jar)
+	under GNU Lesser General Public License (LGPL), Version 2.1
+	http://hibernate.org
+
+Hibernate/Ehcache Integration (hibernate-ehcache-4.3.11.Final.jar)
+	under GNU Lesser General Public License (LGPL), Version 2.1
+	http://hibernate.org
+
+Hibernate/Infinispan Integration (hibernate-infinispan-4.3.11.Final.jar)
+	under GNU Lesser General Public License (LGPL), Version 2.1
+	http://hibernate.org
+
+Hibernate Commons Annotations (hibernate-commons-annotations-4.0.5.Final.jar)
+	under GNU Lesser General Public License (LGPL), Version 2.1
+	http://hibernate.org
+
+Java Persistence API, Version 2.1 (hibernate-jpa-2.1-api-1.0.0.Final.jar)
+	under Eclipse Distribution License (EDL), Version 1.0
+	http://hibernate.org
+
+Infinispan Commons (infinispan-commons-7.2.5.Final.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.infinispan.org/infinispan-commons
+
+Infinispan Core (infinispan-core-7.2.5.Final.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.infinispan.org/infinispan-core
+
+Infinispan Spring 3 Integration (infinispan-spring-7.2.5.Final.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.infinispan.org/infinispan-spring
+
+Jasig CAS Client for Java - Core (cas-client-core-3.3.3.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.jasig.org/cas/cas-client-core
+
+Javassist (javassist-3.18.2-GA.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.javassist.org/
+
+Java Annotation Indexer (jandex-1.1.0.Final.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.jboss.org/jandex
+
+JBossTS jbossjta (jbossjta-4.16.6.Final.jar)
+	under GNU Lesser General Public License (LGPL), Version 2.1
+	http://www.jboss.org/jbosstm/
+
+JBoss Logging 3 (jboss-logging-3.1.3.GA.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.jboss.org
+
+JBoss Logging I18n Annotations (jboss-logging-annotations-1.2.1.Final.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.jboss.org/jboss-logging-tools-parent/jboss-logging-annotations
+
+JBoss Marshalling OSGi Bundle (jboss-marshalling-osgi-1.4.10.Final.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.jboss.org/jboss-marshalling-parent/jboss-marshalling-osgi
+
+Java Transaction API (jboss-transaction-api_1.2_spec-1.0.0.Final.jar)
+	under Common Development and Distribution License (CDDL), Version 1.0
+	http://www.jboss.org/jboss-transaction-api_1.2_spec
+
+JGroups (jgroups-3.6.6.Final.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.jgroups.org
+
+ASM Core (asm-5.0.3.jar)
+	under BSD or BSD-style License
+	http://asm.objectweb.org/asm/
+
+ASM Commons (asm-commons-5.0.3.jar)
+	under BSD or BSD-style License
+	http://asm.objectweb.org/asm-commons/
+
+ASM Tree (asm-tree-5.0.3.jar)
+	under BSD or BSD-style License
+	http://asm.objectweb.org/asm-tree/
+
+ASM Util (asm-util-5.0.3.jar)
+	under BSD or BSD-style License
+	http://asm.objectweb.org/asm-util/
+
+Restlet Core - API and Engine (org.restlet-2.3.4.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://restlet.org/org.restlet
+
+SLF4J API Module (slf4j-api-1.7.12.jar)
+	under MIT License
+	http://www.slf4j.org
+
+SLF4J LOG4J-12 Binding (slf4j-log4j12-1.7.12.jar)
+	under MIT License
+	http://www.slf4j.org
+
+Spring AOP (spring-aop-3.2.14.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	https://github.com/SpringSource/spring-framework
+
+Spring Beans (spring-beans-3.2.14.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	https://github.com/SpringSource/spring-framework
+
+Spring Context (spring-context-3.2.14.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	https://github.com/SpringSource/spring-framework
+
+Spring Context Support (spring-context-support-3.2.11.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	https://github.com/SpringSource/spring-framework
+
+Spring Core (spring-core-3.2.14.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	https://github.com/SpringSource/spring-framework
+
+Spring Expression Language (SpEL) (spring-expression-3.2.14.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	https://github.com/SpringSource/spring-framework
+
+Spring JDBC (spring-jdbc-3.2.14.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	https://github.com/SpringSource/spring-framework
+
+Spring Struts (spring-struts-3.2.14.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	https://github.com/SpringSource/spring-framework
+
+Spring Transaction (spring-tx-3.2.14.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	https://github.com/SpringSource/spring-framework
+
+Spring Web (spring-web-3.2.14.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	https://github.com/SpringSource/spring-framework
+
+Spring Web MVC (spring-webmvc-3.2.14.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	https://github.com/SpringSource/spring-framework
+
+Spring Integration Core (spring-integration-core-3.0.7.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.springintegration.org/
+
+Spring Integration File Support (spring-integration-file-3.0.7.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.springintegration.org/
+
+Spring Integration Mail Support (spring-integration-mail-3.0.7.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.springintegration.org/
+
+spring-ldap-core (spring-ldap-core-1.3.2.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.springframework.org/ldap
+
+Spring Retry (spring-retry-1.0.3.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://www.springsource.org
+
+spring-security-acl (spring-security-acl-3.2.8.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://spring.io/spring-security
+
+spring-security-aspects (spring-security-aspects-3.2.8.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://spring.io/spring-security
+
+spring-security-cas (spring-security-cas-3.2.8.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://spring.io/spring-security
+
+spring-security-config (spring-security-config-3.2.8.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://spring.io/spring-security
+
+spring-security-core (spring-security-core-3.2.8.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://spring.io/spring-security
+
+spring-security-ldap (spring-security-ldap-3.2.8.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://spring.io/spring-security
+
+spring-security-taglibs (spring-security-taglibs-3.2.8.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://spring.io/spring-security
+
+spring-security-web (spring-security-web-3.2.8.RELEASE.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://spring.io/spring-security
+
+CPSolver (cpsolver-1.3.109.jar)
+	under GNU Lesser General Public License (LGPL), Version 3
+	http://www.cpsolver.org
+
+oro (oro-2.0.8.jar)
+	under Apache Software License (ASL), Version 2.0
+
+XML Commons External Components XML APIs (xml-apis-1.0.b2.jar)
+	under Apache Software License (ASL), Version 2.0
+	http://xml.apache.org/commons/#external
+
+The famfamfam Silk Icons under Creative Commons Attribution 3.0 License
+	http://www.famfamfam.com/lab/icons/silk
+
+LED Icon Set under Creative Commons Attribution 3.0 License
+	http://led24.de/iconset/
+
+Free web development icons under Public Domain
+	http://www.icojam.com/blog/?p=119
+
+Onebit icon sets under Public Domain
+	http://www.icojam.com/blog/?p=177
+
+===========================================================================
+
+For the appropriate license, see
+
+Apache Software License (ASL), Version 2.0 
+	http://www.apache.org/licenses/LICENSE-2.0
+	http://www.gwtproject.org/terms.html (GWT)
+
+BSD or BSD-style Licenses
+	http://asm.ow2.org/license.html (ASM Core)
+	http://www.antlr.org/license.html (AntLR Parser Generator)
+	http://freemarker.org/docs/app_license.html (FreeMaker)
+	http://opensource.org/licenses/bsd-license.php (Protocol Buffer Java API, biweekly)
+	http://dom4j.sourceforge.net/dom4j-1.6.1/license.html (dom4j)
+
+Common Development and Distribution License (CDDL), Version 1.0
+	http://opensource.org/licenses/CDDL-1.0
+
+Creative Commons Attribution 3.0 License
+	http://creativecommons.org/licenses/by/3.0
+
+Eclipse Public License (EPL), Version 1.0
+	http://www.eclipse.org/legal/epl-v10.html
+
+GNU Lesser General Public License (LGPL), Version 2.1
+	https://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
+
+GNU Lesser General Public License (LGPL), Version 3
+	https://www.gnu.org/licenses/lgpl.html
+
+JA-SIG License for Use
+	http://www.jasig.org/cas/license
+
+Public Domain
+	http://www.json.org/license.html (JSON)
+	http://creativecommons.org/publicdomain/mark/1.0 (Free web development icons, Onebit icon sets)
+
+MIT License
+	http://www.slf4j.org/license.html (SLF4J)
+
+Mozilla Public License (MPL), Version 1.1
+	http://www.mozilla.org/MPL/1.1

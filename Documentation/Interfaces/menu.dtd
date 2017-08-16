@@ -1,0 +1,66 @@
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+ 
+<!ELEMENT unitime-menu (menu|item|separator|remove)* >
+ 
+<!ELEMENT menu ((condition|new-condition)?,  (menu|item|separator|remove)*) >
+<!ATTLIST menu name CDATA #REQUIRED >
+<!ATTLIST menu title CDATA #IMPLIED >
+<!ATTLIST menu page CDATA #IMPLIED >
+<!ATTLIST menu type (gwt|property) #IMPLIED >
+<!ATTLIST menu target (download|dialog) #IMPLIED >
+ 
+<!ELEMENT separator ((condition|new-condition)?) >
+
+<!ELEMENT item ((condition|new-condition)?) > 
+<!ATTLIST item name CDATA #REQUIRED >
+<!ATTLIST item page CDATA #REQUIRED >
+<!ATTLIST item type (gwt|property|page) #IMPLIED >
+<!ATTLIST item target (download|dialog) #IMPLIED >
+
+<!ELEMENT condition (and|or|not|isAuthenticated|hasRole|hasProperty|propertyEquals|hasRight)* >
+
+<!ELEMENT and (and|or|not|isAuthenticated|hasRole|hasProperty|propertyEquals|hasRight)* >
+<!ELEMENT or (and|or|not|isAuthenticated|hasRole|hasProperty|propertyEquals|hasRight)* >
+<!ELEMENT not (and|or|not|isAuthenticated|hasRole|hasProperty|propertyEquals|hasRight)* >
+ 
+ <!ELEMENT isAuthenticated EMPTY >
+ 
+<!ELEMENT hasRole EMPTY >
+<!ATTLIST hasRole name CDATA #IMPLIED >
+
+<!ELEMENT hasProperty EMPTY >
+<!ATTLIST hasProperty name CDATA #REQUIRED >
+
+<!ELEMENT propertyEquals EMPTY >
+<!ATTLIST propertyEquals name CDATA #REQUIRED >
+<!ATTLIST propertyEquals value CDATA #REQUIRED >
+<!ATTLIST propertyEquals defaultValue CDATA #IMPLIED >
+
+<!ELEMENT hasRight EMPTY >
+<!ATTLIST hasRight name (canSeeCourses|canSeeTimetable|hasASolverGroup|canDoTimetable|canAudit|canSectionStudents|isSectioningEnabled|isRegistrationEnabled|canSeeEvents|isChameleon|hasPersonalReport|isStudent|hasRoomAvailability|canSeeExams|canTimetableExams|hasCourseReports|hasExamReports|hasStudentReports|hasEventReports|isInstructor|hasPointInTimeDataReports) #REQUIRED >
+
+<!-- custom menu -->
+<!ATTLIST item position CDATA #IMPLIED >
+
+<!ELEMENT remove EMPTY > 
+<!ATTLIST remove name CDATA #REQUIRED >
+
+<!ELEMENT new-condition (and|or|not|isAuthenticated|hasRole|hasProperty|propertyEquals|hasRight)* >

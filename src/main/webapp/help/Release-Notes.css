@@ -1,0 +1,104 @@
+/*
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+*/
+doc-title {
+	color: #35526f;
+	font-weight: bold;
+	font-size: 150%;
+	border-bottom: #35526f 1px solid;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	margin-left: 5px;
+}
+
+release {
+	display: block;
+	margin-top: 15px;
+	margin-bottom: 5px;
+	border-bottom: #ababab 12px solid;
+	margin-left: 10px;
+}
+
+version {
+	font-size: 110%;
+	display: inline;
+	font-weight: bold;
+	text-decoration: underline;
+	margin-top: 15px;
+	margin-bottom: 10px;
+}
+
+release-date {
+	font-size: 110%;
+	display: inline;
+	font-weight: bold;
+	text-decoration: underline;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+release-description {
+	font-size: 105%;
+	display: block;
+	margin-left: 70px;
+	margin-bottom: 10px;
+	color: navy;
+}
+
+category {
+	display: block;
+	margin-left: 30px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	list-style-type: disc;
+}
+
+category title {
+	display: list-item;
+	font-variant: small-caps;
+	color: navy;
+}
+
+item {
+	display: block;
+	margin-left: 30px;
+	list-style-type: square;
+}
+
+item name {
+	display: list-item;
+	font-style: italic;
+	font-size: 105%;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	color: maroon;
+}
+
+description {
+	display: block;
+	margin-left: 30px;
+	list-style-type: circle;
+	color: black;
+}
+
+description line {
+	display: list-item;
+	color: black;
+	margin-left: 30px;
+}

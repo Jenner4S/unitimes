@@ -1,0 +1,142 @@
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+
+<!ELEMENT acadArea ( major*, minor* ) >
+<!ATTLIST acadArea abbv CDATA #REQUIRED >
+<!ATTLIST acadArea classification CDATA #REQUIRED >
+
+<!ELEMENT acknowledgement ( message* ) >
+<!ATTLIST acknowledgement result ( ok | fail ) #REQUIRED >
+
+<!ELEMENT alternative EMPTY >
+<!ATTLIST alternative courseNumber CDATA #REQUIRED >
+<!ATTLIST alternative subjectArea CDATA #REQUIRED >
+<!ATTLIST alternative title CDATA #IMPLIED >
+
+<!ELEMENT cancelStudent EMPTY >
+<!ATTLIST cancelStudent delete ( true | false ) "false" >
+
+<!ELEMENT choice ( depends* ) >
+<!ATTLIST choice available ( false | true ) #IMPLIED >
+<!ATTLIST choice date CDATA #IMPLIED >
+<!ATTLIST choice days CDATA #IMPLIED >
+<!ATTLIST choice endTime CDATA #IMPLIED >
+<!ATTLIST choice id CDATA #REQUIRED >
+<!ATTLIST choice instructor CDATA #IMPLIED >
+<!ATTLIST choice selection ( select | wait ) #IMPLIED >
+<!ATTLIST choice startTime CDATA #IMPLIED >
+<!ATTLIST choice time CDATA #IMPLIED >
+
+<!ELEMENT class ( choice* ) >
+<!ATTLIST class assignmentId CDATA #IMPLIED >
+<!ATTLIST class date CDATA #IMPLIED >
+<!ATTLIST class days CDATA #IMPLIED >
+<!ATTLIST class endTime CDATA #IMPLIED >
+<!ATTLIST class id CDATA #IMPLIED >
+<!ATTLIST class instructor CDATA #IMPLIED >
+<!ATTLIST class location CDATA #IMPLIED >
+<!ATTLIST class name CDATA #IMPLIED >
+<!ATTLIST class note CDATA #IMPLIED >
+<!ATTLIST class parent CDATA #IMPLIED >
+<!ATTLIST class startTime CDATA #IMPLIED >
+<!ATTLIST class time CDATA #IMPLIED >
+<!ATTLIST class externalId CDATA #IMPLIED >
+<!ATTLIST class type CDATA #IMPLIED >
+<!ATTLIST class suffix CDATA #IMPLIED >
+
+<!ELEMENT courseOffering ( alternative | class )* >
+<!ATTLIST courseOffering alternative ( false | true ) #IMPLIED >
+<!ATTLIST courseOffering courseNumber CDATA #REQUIRED >
+<!ATTLIST courseOffering credit CDATA #IMPLIED >
+<!ATTLIST courseOffering subjectArea CDATA #REQUIRED >
+<!ATTLIST courseOffering title CDATA #IMPLIED >
+<!ATTLIST courseOffering waitlist ( false | true ) #IMPLIED >
+
+<!ELEMENT courseRequests ( courseOffering | freeTime )* >
+<!ATTLIST courseRequests distribution ( dense | spread ) #IMPLIED >
+
+<!ELEMENT depends ( depends* ) >
+<!ATTLIST depends choice CDATA #REQUIRED >
+<!ATTLIST depends class CDATA #REQUIRED >
+<!ATTLIST depends selection ( select | wait ) #IMPLIED >
+
+<!ELEMENT disability EMPTY >
+<!ATTLIST disability code CDATA #REQUIRED >
+
+<!ELEMENT email EMPTY >
+<!ATTLIST email value CDATA #REQUIRED >
+
+<!ELEMENT freeTime EMPTY >
+<!ATTLIST freeTime days CDATA #REQUIRED >
+<!ATTLIST freeTime endTime CDATA #REQUIRED >
+<!ATTLIST freeTime length CDATA #IMPLIED >
+<!ATTLIST freeTime startTime CDATA #REQUIRED >
+<!ATTLIST freeTime time CDATA #IMPLIED >
+
+<!ELEMENT groupAffiliation EMPTY >
+<!ATTLIST groupAffiliation code CDATA #REQUIRED >
+
+<!ELEMENT major EMPTY >
+<!ATTLIST major code CDATA #REQUIRED >
+
+<!ELEMENT message ( #PCDATA ) >
+<!ATTLIST message type CDATA #REQUIRED >
+
+<!ELEMENT minor EMPTY >
+<!ATTLIST minor code CDATA #REQUIRED >
+
+<!ELEMENT name EMPTY >
+<!ATTLIST name first CDATA #REQUIRED >
+<!ATTLIST name last CDATA #REQUIRED >
+<!ATTLIST name middle CDATA #IMPLIED >
+
+<!ELEMENT notification ( student ) >
+<!ATTLIST notification campus CDATA #REQUIRED >
+<!ATTLIST notification year CDATA #REQUIRED >
+<!ATTLIST notification term CDATA #REQUIRED >
+
+<!ELEMENT request ( student+ ) >
+<!ATTLIST request campus CDATA #REQUIRED >
+<!ATTLIST request year CDATA #REQUIRED >
+<!ATTLIST request term CDATA #REQUIRED >
+<!ATTLIST request enrollments ( update | nochange | delete | import ) #IMPLIED >
+
+<!ELEMENT requestSchedule ( courseOffering )* >
+<!ATTLIST requestSchedule type ( commit | query ) #REQUIRED >
+
+<!ELEMENT response ( student ) >
+<!ATTLIST response campus CDATA #REQUIRED >
+<!ATTLIST response year CDATA #REQUIRED >
+<!ATTLIST response term CDATA #REQUIRED >
+
+<!ELEMENT retrieveCourseRequests EMPTY >
+
+<!ELEMENT schedule ( courseOffering | freeTime )* >
+<!ATTLIST schedule type ( actual | proposed ) #REQUIRED >
+
+<!ELEMENT student ( updateDemographics?, updateCourseRequests?, requestSchedule?, retrieveCourseRequests?, cancelStudent?, acknowledgement?, courseRequests?, schedule?, message* ) >
+<!ATTLIST student key CDATA #REQUIRED >
+
+<!ELEMENT updateCourseRequests ( courseOffering | freeTime )* >
+<!ATTLIST updateCourseRequests commit ( false | true ) #REQUIRED >
+<!ATTLIST updateCourseRequests distribution ( dense | spread ) #IMPLIED >
+
+<!ELEMENT updateDemographics ( name, email?, acadArea+, major*, minor*, disability*, groupAffiliation* ) >
+

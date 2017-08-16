@@ -1,0 +1,79 @@
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+
+<!ELEMENT arrangeTime EMPTY >
+<!ATTLIST arrangeTime minPerWeek NMTOKEN #IMPLIED >
+
+<!ELEMENT class ( class*, date*, (time|arrangeTime)?, (room|location)*, instructor* ) >
+<!ATTLIST class id CDATA #IMPLIED >
+<!ATTLIST class name CDATA #IMPLIED >
+<!ATTLIST class subject CDATA #IMPLIED >
+<!ATTLIST class courseNbr NMTOKEN #IMPLIED >
+<!ATTLIST class type NMTOKEN #IMPLIED >
+<!ATTLIST class suffix NMTOKEN #IMPLIED >
+<!ATTLIST class scheduleNote CDATA #IMPLIED >
+<!ATTLIST class studentScheduling (true|false) #IMPLIED >
+<!ATTLIST class displayInScheduleBook (true|false) #IMPLIED >
+<!ATTLIST class controlling (true|false) #IMPLIED >
+<!ATTLIST class solver CDATA #IMPLIED >
+<!ATTLIST class limit NMTOKEN #IMPLIED >
+
+<!ELEMENT date EMPTY >
+<!ATTLIST date endDate CDATA #REQUIRED >
+<!ATTLIST date startDate CDATA #REQUIRED >
+
+<!ELEMENT instructor EMPTY >
+<!ATTLIST instructor id NMTOKEN #IMPLIED >
+<!ATTLIST instructor fname CDATA #IMPLIED >
+<!ATTLIST instructor mname CDATA #IMPLIED >
+<!ATTLIST instructor lname CDATA #IMPLIED >
+<!ATTLIST instructor share NMTOKEN #IMPLIED >
+<!ATTLIST instructor lead ( false | true ) #IMPLIED >
+
+<!ELEMENT room EMPTY >
+<!ATTLIST room id CDATA #IMPLIED >
+<!ATTLIST room building NMTOKEN #IMPLIED >
+<!ATTLIST room roomNbr NMTOKEN #IMPLIED >
+<!ATTLIST room name CDATA #IMPLIED >
+
+<!ELEMENT location EMPTY >
+<!ATTLIST location id CDATA #IMPLIED >
+<!ATTLIST location name CDATA #IMPLIED >
+
+<!ELEMENT time EMPTY >
+<!ATTLIST time days NMTOKEN #REQUIRED >
+<!ATTLIST time endTime NMTOKEN #IMPLIED >
+<!ATTLIST time startTime NMTOKEN #REQUIRED >
+<!ATTLIST time timePattern CDATA #IMPLIED >
+<!ATTLIST time datePattern CDATA #IMPLIED >
+
+<!ELEMENT timetable ( class+ ) >
+<!ATTLIST timetable action CDATA #IMPLIED >
+<!ATTLIST timetable campus NMTOKEN #REQUIRED >
+<!ATTLIST timetable year NMTOKEN #REQUIRED >
+<!ATTLIST timetable term NMTOKEN #REQUIRED >
+<!ATTLIST timetable created CDATA #IMPLIED >
+<!ATTLIST timetable timeFormat CDATA #IMPLIED >
+<!ATTLIST timetable dateFormat CDATA #IMPLIED >
+<!ATTLIST timetable prefer (id|name) #IMPLIED >
+<!ATTLIST timetable instructors (true|false) #IMPLIED >
+<!ATTLIST timetable notes (true|false) #IMPLIED >
+
+

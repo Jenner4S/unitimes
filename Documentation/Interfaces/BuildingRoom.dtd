@@ -1,0 +1,63 @@
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+
+<!ELEMENT assigned EMPTY >
+<!ATTLIST assigned departmentNumber CDATA #REQUIRED >
+<!ATTLIST assigned percent CDATA #REQUIRED >
+
+<!ELEMENT building ( room* ) >
+<!ATTLIST building abbreviation CDATA #REQUIRED >
+<!ATTLIST building externalId CDATA #REQUIRED >
+<!ATTLIST building locationX CDATA #REQUIRED >
+<!ATTLIST building locationY CDATA #REQUIRED >
+<!ATTLIST building name CDATA #REQUIRED >
+
+<!ELEMENT buildingsRooms ( building+ ) >
+<!ATTLIST buildingsRooms campus CDATA #REQUIRED >
+<!ATTLIST buildingsRooms term CDATA #REQUIRED >
+<!ATTLIST buildingsRooms year CDATA #REQUIRED >
+<!ATTLIST buildingsRooms created CDATA #IMPLIED >
+
+<!ELEMENT room ( roomDepartments+, roomFeatures* ) >
+<!ATTLIST room capacity CDATA #REQUIRED >
+<!ATTLIST room examCapacity CDATA #IMPLIED >
+<!ATTLIST room displayName CDATA #IMPLIED >
+<!ATTLIST room externalId CDATA #REQUIRED >
+<!ATTLIST room instructional ( false | False | true | True ) #REQUIRED >
+<!ATTLIST room locationX CDATA #IMPLIED >
+<!ATTLIST room locationY CDATA #IMPLIED >
+<!ATTLIST room area CDATA #IMPLIED >
+<!ATTLIST room roomClassification CDATA #REQUIRED >
+<!ATTLIST room roomNumber CDATA #REQUIRED >
+<!ATTLIST room scheduledRoomType ( computingLab | departmental | genClassroom ) #IMPLIED >
+
+<!ELEMENT roomDepartments ( assigned+, scheduling* ) >
+
+<!ELEMENT roomFeature EMPTY >
+<!ATTLIST roomFeature feature CDATA #REQUIRED >
+<!ATTLIST roomFeature value CDATA #REQUIRED >
+
+<!ELEMENT roomFeatures ( roomFeature+ ) >
+
+<!ELEMENT scheduling EMPTY >
+<!ATTLIST scheduling departmentNumber CDATA #REQUIRED >
+<!ATTLIST scheduling percent CDATA #REQUIRED >
+
+

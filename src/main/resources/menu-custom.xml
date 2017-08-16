@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE unitime-menu PUBLIC "-//UniTime//UniTime Menu DTD/EN" "http://www.unitime.org/interface/menu.dtd">
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+ <unitime-menu>
+	<!-- Add custom administration menu with users -->
+	<menu name="Administration">
+		<menu name="Other">
+			<item name="Users" page="userEdit.do" position="5">
+				<!-- Only when LDAP is not configured -->
+				<condition>
+					<propertyEquals name="tmtbl.authenticate.ldap.provider" value="" defaultValue=""/>
+					<hasPermission name="Users"/>
+				</condition>
+			</item>
+		</menu>
+	</menu>
+	
+	<!-- Example 1: no student sectioning -->
+	<!-- 
+	<remove name="Students"/>
+	-->
+	
+	<!-- Example 2: no designator list -->
+	<!-- 
+	<menu name="Courses">
+		<menu name="Input Data">
+			<menu name="Instructors">
+				<remove name="Designator List"/>
+			</menu>
+		</menu>
+	</menu>
+	-->
+	
+	<!-- Exampe 3: only administrator can see student sectioning -->
+	<!-- 
+	<menu name="Students">
+		<new-condition>
+			<hasRole name="Administrator"/>
+		</new-condition>
+	</menu>
+	-->
+	
+	<!-- Example 4: show the old sectioning demo instead of the scheduling assistant (as a new item) -->
+	<!-- 
+	<menu name="Students">
+		<remove name="Scheduling Assistant"/>
+		<item name="Scheduling Demo" page="sectioningDemo.do" position="3"/>
+	</menu>
+	-->
+
+	<!-- Example 5: show the old sectioning demo instead of the scheduling assistant (change the existing item) -->
+	<!-- 
+	<menu name="Students">
+		<item name="Scheduling Assistant" page="sectioningDemo.do" type="page"/>
+	</menu>
+	-->
+</unitime-menu>

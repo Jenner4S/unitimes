@@ -1,0 +1,66 @@
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+
+<!-- Element acadAreaClass is deprecated in UniTime 4.2, use major.academicClass and minor.academicClass instead. -->
+<!ELEMENT acadAreaClass EMPTY >
+<!ATTLIST acadAreaClass academicArea CDATA #REQUIRED >
+<!ATTLIST acadAreaClass academicClass CDATA #REQUIRED >
+
+<!ELEMENT major EMPTY >
+<!ATTLIST major academicArea CDATA #REQUIRED >
+<!-- Attribute major.academicClass since UniTime 4.2 -->
+<!ATTLIST major academicClass CDATA #IMPLIED >
+<!ATTLIST major code CDATA #REQUIRED >
+
+<!ELEMENT minor EMPTY >
+<!ATTLIST minor academicArea CDATA #REQUIRED >
+<!-- Attribute minor.academicClass since UniTime 4.2 -->
+<!ATTLIST minor academicClass CDATA #IMPLIED >
+<!ATTLIST minor code CDATA #REQUIRED >
+
+<!ELEMENT studentGroup EMPTY >
+<!ATTLIST studentGroup group CDATA #REQUIRED >
+
+<!ELEMENT studentAccomodation EMPTY >
+<!ATTLIST studentAccomodation accomodation CDATA #REQUIRED >
+
+<!ELEMENT student ( studentAcadAreaClass?, studentMajors, studentMinors?, studentGroups?, studentAccomodations? ) >
+<!ATTLIST student externalId CDATA #REQUIRED >
+<!ATTLIST student firstName CDATA #REQUIRED >
+<!ATTLIST student lastName CDATA #REQUIRED >
+<!ATTLIST student middleName CDATA #IMPLIED >
+<!ATTLIST student email CDATA #IMPLIED >
+
+<!ELEMENT studentAcadAreaClass ( acadAreaClass+ ) >
+
+<!ELEMENT studentMajors ( major+ ) >
+
+<!ELEMENT studentMinors ( minor* ) >
+
+<!ELEMENT studentGroups ( studentGroup* ) >
+
+<!ELEMENT studentAccomodations ( studentAccomodation* ) >
+
+<!ELEMENT students ( student+ ) >
+<!ATTLIST students campus CDATA #REQUIRED >
+<!ATTLIST students term CDATA #REQUIRED >
+<!ATTLIST students year CDATA #REQUIRED >
+<!ATTLIST students incremental ( false | true ) "false" > 
+

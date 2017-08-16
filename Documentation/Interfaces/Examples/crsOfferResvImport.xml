@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE courseOfferingReservations PUBLIC "-//UniTime//DTD University Course Timetabling/EN" "http://www.unitime.org/interface/CourseOfferingReservation.dtd">
+
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+
+	<!-- offeringReservation ==> Required:  subject, courseNumber  {Course Offering identification}
+	                                        reservationType, level, priority
+	                                        request, reserved
+	                    				      (One of request | reserved must be non-null.  
+	                    				       If one is null it defaults to the non-null value.)
+	                                        configuration
+	                                          (Configuration is only required to be non-null if 
+	                                           level = "configuration".)
+	                             Optional:  priorEnrollment, projectedEnrollment
+	     
+	     reservationType = info, temp or perm
+	     level = instrOffering, configuration
+	-->
+<courseOfferingReservations campus="puWestLafayetteTrdtn" term="Fal" year="2007">
+	<offeringReservation subject="MSE" courseNumber="597F" reservationType="perm" level="instrOffering" configuration="" priority="1" request="16" reserved="16" priorEnrollment="0" projectedEnrollment="2"/>
+	<offeringReservation subject="A&amp;AE" courseNumber="590F" reservationType="perm" level="instrOffering" configuration="" priority="1" request="16" reserved="" priorEnrollment="0" projectedEnrollment="7"/>
+	<offeringReservation subject="AFT" courseNumber="111" reservationType="perm" level="configuration" configuration="3" priority="1" request="70" reserved="70" priorEnrollment="0" projectedEnrollment="54"/>
+	<offeringReservation subject="NRES" courseNumber="385" reservationType="perm" level="instrOffering" configuration="" priority="2" request="5" reserved="5" priorEnrollment="0" projectedEnrollment="0"/>
+	<offeringReservation subject="AGRY" courseNumber="385" reservationType="perm" level="instrOffering" configuration="" priority="4" request="24" reserved="24" priorEnrollment="0" projectedEnrollment="12"/>
+</courseOfferingReservations>

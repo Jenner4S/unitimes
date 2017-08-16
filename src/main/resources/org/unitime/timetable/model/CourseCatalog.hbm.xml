@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+<hibernate-mapping package="org.unitime.timetable.model">
+    <class name="CourseCatalog" table="course_catalog">
+        <cache include="non-lazy" usage="transactional"/>
+        <id
+            name="uniqueId"
+            column="uniqueid"
+            type="java.lang.Long">
+            <generator class="org.unitime.commons.hibernate.id.UniqueIdGenerator">
+                <param name="sequence">pref_group_seq</param>
+            </generator>
+        </id>
+
+        <property
+            name="externalUniqueId"
+            column="external_uid"
+            type="java.lang.String"
+            not-null="false"
+            length="40"/>
+
+        <property
+            name="subject"
+            column="subject"
+            type="java.lang.String"
+            not-null="true"
+            length="10"/>
+
+        <property
+            name="courseNumber"
+            column="course_nbr"
+            type="java.lang.String"
+            not-null="true"
+            length="10"/>
+
+        <property
+            name="title"
+            column="title"
+            type="java.lang.String"
+            not-null="true"
+            length="100"/>
+
+        <property
+            name="permanentId"
+            column="perm_id"
+            type="java.lang.String"
+            not-null="false"
+            length="20"/>
+
+        <property
+            name="approvalType"
+            column="approval_type"
+            type="java.lang.String"
+            not-null="false"
+            length="20"/>
+
+        <property
+            name="previousSubject"
+            column="prev_subject"
+            type="java.lang.String"
+            not-null="false"
+            length="10"/>
+
+        <property
+            name="previousCourseNumber"
+            column="prev_crs_nbr"
+            type="java.lang.String"
+            not-null="false"
+            length="10"/>
+
+        <property
+            name="creditType"
+            column="credit_type"
+            type="java.lang.String"
+            not-null="true"
+            length="20"/>
+
+        <property
+            name="creditUnitType"
+            column="credit_unit_type"
+            type="java.lang.String"
+            not-null="true"
+            length="20"/>
+
+        <property
+            name="creditFormat"
+            column="credit_format"
+            type="java.lang.String"
+            not-null="true"
+            length="20"/>
+
+        <property
+            name="fixedMinimumCredit"
+            column="fixed_min_credit"
+            type="java.lang.Float"
+            not-null="true"
+            length="10"/>
+
+        <property
+            name="maximumCredit"
+            column="max_credit"
+            type="java.lang.Float"
+            not-null="false"
+            length="10"/>
+
+        <property
+            name="fractionalCreditAllowed"
+            column="frac_credit_allowed"
+            type="java.lang.Boolean"
+            not-null="false"
+            length="10"/>
+
+        <set name="subparts" cascade="all-delete-orphan">
+            <cache include="non-lazy" usage="transactional"/>
+            <key column="course_catalog_id"/>
+            <one-to-many class="CourseSubpartCredit"/>
+        </set>
+        <many-to-one
+            name="session"
+            class="Session"
+            column="session_id"
+            not-null="true"/>
+
+    </class>
+</hibernate-mapping>

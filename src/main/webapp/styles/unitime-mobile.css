@@ -1,0 +1,565 @@
+/*
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+*/
+.unitime-MobileNotifications {
+	display: block;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	z-index: 5000000;
+}
+
+.unitime-MobileNotifications .container {
+	display: block;
+}
+
+.unitime-MobileNotifications .slideup {
+	-webkit-animation: slideupfrombottom 1s ease-in-out;
+}
+
+
+@-webkit-keyframes slideupfrombottom {
+  from { -webkit-transform: translateY(100%); }
+  to { -webkit-transform: translateY(0); }
+}
+
+.unitime-MobileNotifications .notification {
+	font-size: small;
+	font-family: arial;
+	overflow: hidden;
+	padding: 10px;
+	color: #000000;
+	width: 100%;
+	vertical-align: middle;
+	text-align: center;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	cursor: pointer;
+	overflow-y: hidden;
+}
+
+.unitime-MobileNotifications .info {
+	background-image: linear-gradient(bottom, rgb(138,169,230) 0%, rgb(232,240,255) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(138,169,230) 0%, rgb(232,240,255) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(138,169,230) 0%, rgb(232,240,255) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(138,169,230) 0%, rgb(232,240,255) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(138,169,230) 0%, rgb(232,240,255) 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(138,169,230)),
+		color-stop(1, rgb(232,240,255))
+	);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#e8f0ff', EndColorStr='#8aa9e6');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#e8f0ff', EndColorStr='#8aa9e6')";
+	border: 1px solid #2952A3;
+	-moz-box-shadow:    2px 2px 3px rgb(164,193,245);
+  	-webkit-box-shadow: 2px 2px 3px rgb(164,193,245);
+  	box-shadow:         2px 2px 3px rgb(164,193,245);
+  	background-color: rgb(138,169,230);
+}
+
+.unitime-MobileNotifications .warn {
+	background-image: linear-gradient(bottom, rgb(209,179,111) 0%, rgb(250,242,208) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(209,179,111) 0%, rgb(250,242,208) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(209,179,111) 0%, rgb(250,242,208) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(209,179,111) 0%, rgb(250,242,208) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(209,179,111) 0%, rgb(250,242,208) 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(209,179,111)),
+		color-stop(1, rgb(250,242,208))
+	);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#faf2d0', EndColorStr='#d1b36f');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#faf2d0', EndColorStr='#d1b36f')";
+	border: 1px solid #A39329;
+	-moz-box-shadow:    2px 2px 3px rgb(224,200,148);
+  	-webkit-box-shadow: 2px 2px 3px rgb(224,200,148);
+  	box-shadow:         2px 2px 3px rgb(224,200,148);
+  	background-color: rgb(209,179,111);
+}
+
+.unitime-MobileNotifications .error {
+	background-image: linear-gradient(bottom, rgb(209,138,138) 0%, rgb(247,225,225) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(209,138,138) 0%, rgb(247,225,225) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(209,138,138) 0%, rgb(247,225,225) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(209,138,138) 0%, rgb(247,225,225) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(209,138,138) 0%, rgb(247,225,225) 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(209,138,138)),
+		color-stop(1, rgb(247,225,225))
+	);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='#F7E1E1', EndColorStr='#D18A8A');
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#F7E1E1', EndColorStr='#D18A8A')";
+	border: 1px solid #A32929;
+	-moz-box-shadow:    2px 2px 3px rgb(232,162,162);
+  	-webkit-box-shadow: 2px 2px 3px rgb(232,162,162);
+  	box-shadow:         2px 2px 3px rgb(232,162,162);
+  	background-color: rgb(209,138,138);
+}
+
+.unitime-MobileFrameDialog {
+	width: 100%;
+	padding: 0px;
+	border: none;
+}
+
+.unitime-MobileFrameDialog .frame {
+	width: calc(100vw - 4px);
+	height: 100vh;
+	padding: 0px;
+	margin: 0px;
+	border: none;
+}
+
+.unitime-PageHeader .mobile-menu-button {
+	display: none;
+}
+
+.unitime-Login .mobile-menu-button {
+	display: none;
+}
+
+.unitime-Page .mobile-menu {
+	display: none;
+}
+
+.unitime-Page .mobile-menu .gwt-StackPanel {
+	width: 100%;
+}
+
+.unitime-Login .mobile-menu {
+	display: none;
+}
+
+.unitime-Login .mobile-menu .gwt-StackPanel {
+	width: 100%;
+}
+
+.unitime-MobileMenuButton {
+	font-size: large;
+	height: 32px;
+	width: 32px;
+	margin: 2px 4px 2px 4px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+@media all and (max-width: 800px) {
+	.unitime-MainContent {
+		width: inherit;
+		height: inherit;
+		min-height: 70vh;
+	}
+
+	.unitime-MainContent .messages {
+		display: block;
+		padding: 5px;
+	}
+
+	.unitime-MainContent .message {
+		padding: 2px 0px 0px 10px;
+	}
+
+	.unitime-Login .mobile-menu-button {
+		display: inline-block;
+		vertical-align: top;
+		padding-top: 10px;
+	}
+	
+	.unitime-Login .mobile-menu {
+		display: block;
+		padding: 5px;
+	}
+	
+	.unitime-Page .mobile-menu {
+		display: block;
+		width: 100vw;
+		padding: 5px;
+	}
+
+	.unitime-PageHeader {
+		width: 100vw;
+	}
+	
+	.unitime-PageHeader .logo {
+		display: table-cell;
+		background-image: url(../images/unitime-phone.png);
+		background-repeat: no-repeat;
+		background-position: 0px 3px;
+		background-size: 78px 48px;
+		width: 80px;
+	}
+	
+	.unitime-PageHeader .mobile-menu-button {
+		display: table-cell;
+		vertical-align: top;
+		padding-top: 10px;
+		width: 40px;
+	}
+		
+	.unitime-PageHeader .content {
+		float: right;
+	}
+	
+	.unitime-PageHeader .title {
+		white-space: normal;
+	}
+	
+	.unitime-PageHeader .title .text {
+		white-space: normal;
+	}
+	
+	.unitime-Page {
+		min-width: inherit;
+		width: 100%;
+	}
+	
+	.unitime-Page .body {
+		border: none;
+		margin-top: 0px;
+	}
+	
+	.unitime-Page .sidebar {
+		display: none;
+		padding: 0px 0px 0px 0px;
+	}
+	
+	.unitime-Page .footer {
+		max-width: calc(100vw - 4px);
+	}
+	
+	.top-menu {
+		display: none;
+	}
+	
+	.unitime-InfoPanel .row {
+		display: inline-table;
+	}
+	
+	.unitime-InfoPanel .cell {
+		display: inline-block;
+	}
+	
+	.unitime-Footer .row {
+		display: inline-table;
+		white-space: normal;
+		text-align: center;
+	}
+	
+	.unitime-Footer {
+		display: block;
+		text-align: center;
+		border-top: 1px solid #9CB0CE;
+		width: calc(100vw - 4px);
+	}
+	
+	.unitime-Footer .cell {
+		display: inline-block;
+		width: inherit;
+		min-width: 33vw;
+		padding-bottom: 2px;
+	}
+	
+	.unitime-Footer .left {
+		float: left;
+		padding-right: 20px;
+	}
+	
+	.unitime-Footer .right {
+		float: right;
+		padding-left: 20px;
+	}
+	
+	.unitime-CourseFinderDialog .filter {
+		width: 85vw;
+	}
+	
+	.unitime-CourseFinderDialog .course-table {
+		width: 90vw;
+		height: 30vh;
+	}
+	
+	.unitime-CourseFinderDialog .course-details {
+		width: 90vw;
+		height: 30vh;
+	}
+	
+	.unitime-CourseFinderDialog .free-time-picker {
+		width: 90vw;
+	}
+	
+	.unitime-CourseFinderDialog .unitime-Hint {
+		max-width: 90vw;
+		overflow: visible;
+		white-space: normal;
+	}
+
+	.unitime-CourseRequests .line .course .unitime-FilterBox {
+		width: 70vw;
+		width: calc(99vw - 169px);
+		min-width: 150px;
+	}
+
+	.unitime-CourseRequests .alt-line .course .unitime-FilterBox {
+		width: 70vw;
+		width: calc(99vw - 219px);
+		min-width: 100px;
+	}
+	
+	.unitime-CourseRequests .nowaitlist .line .course .unitime-FilterBox {
+		width: calc(99vw - 144px);
+	}
+
+	.unitime-CourseRequests .nowaitlist .alt-line .course .unitime-FilterBox {
+		width: calc(99vw - 194px);
+	}
+
+	.unitime-CourseRequests .noarrows .line .course .unitime-FilterBox {
+		width: calc(99vw - 109px);
+	}
+
+	.unitime-CourseRequests .noarrows .alt-line .course .unitime-FilterBox {
+		width: calc(99vw - 159px);
+	}
+	
+	.unitime-CourseRequests .noarrowswaitlist .line .course .unitime-FilterBox {
+		width: calc(99vw - 89px);
+	}
+
+	.unitime-CourseRequests .noarrowswaitlist .alt-line .course .unitime-FilterBox {
+		width: calc(99vw - 139px);
+	}
+
+	.unitime-CourseRequests .tip {
+		white-space: normal;
+	}
+	
+	.unitime-CourseRequests .alt-header .title {
+		display: inline-block;
+	}
+
+	.unitime-CourseRequests .alt-header .note {
+		display: inline-block;
+		white-space: normal;
+		padding-left: 20px;
+	}
+	
+	.unitime-ClassScheduleTabPanel .unitime-ScrollPanel {
+		width: 95%;
+	}
+	
+	.unitime-ClassScheduleTabPanel {
+		width: calc(100vw - 4px);
+	}
+	
+	.unitime-SchedulingAssistantButtons {
+		width: calc(100vw - 4px);
+	}
+	
+	.unitime-SuggestionsBox .panel {
+		width: 90vw;
+	}
+	
+	.unitime-SuggestionsBox .unitime-ScrollPanel {
+		height: 70vh;
+	}
+	
+	.unitime-PeopleLookup .query {
+		width: 50vw;
+	}
+
+	.unitime-PeopleLookup .unitime-ScrollPanel {
+		width: 90vw;
+		height: 80vh;
+	}
+	
+	.unitime-SelectDegreePlan .plans-table {
+		min-width: 50vw;
+	}
+	
+	.unitime-DegreePlanDialog .plan {
+		width: 90vw;
+		height: 40vh;
+	}
+	
+	.unitime-DegreePlanDialog .unitime-TabPanel {
+		width: 90vw;
+		height: 30vh;
+	}
+
+	.unitime-Note {
+		max-width: 50px;
+	}
+	
+	.unitime-FilterBox {
+		width: inherit;
+	}
+	
+	.unitime-FilterBoxContainer {
+		width: 100%;
+	}
+	
+	.unitime-FilterBoxPopup .value {
+		width: 45%;
+	}
+	
+	.unitime-EventResults .unitime-IntervalSelector .selection {
+		width: 19vw;
+	}
+	
+	.unitime-EventResults .gwt-TabBarItem .gwt-HTML {
+		width: 12vw;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+	
+	.unitime-EventResults .unitime-TabPanel {
+		border-left: none;
+		border-right: none;
+		width: 99vw;
+	}
+	
+	.unitime-MainTable .table-row {
+		width: calc(99vw - 8px);
+		min-width: 100%;
+	}
+	
+	.unitime-MainTable .table-cell {
+		max-width: 80vw;
+	}
+	
+	.unitime-MainTable .label-cell {
+		white-space: normal;
+		max-width: calc(19vw - 4px);
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+	
+	.unitime-MainTable .widget-cell {
+		max-width: calc(80vw - 4px);
+	}
+	
+	.unitime-MainTable .widget-cell .unitime-TextBox {
+		max-width: calc(80vw - 4px);
+	}
+	
+	.unitime-MainTable .widget-cell textarea {
+		max-width: calc(80vw - 4px);
+	}
+	
+	.unitime-ApproveDialog .unitime-MainTable .table-row {
+		width: 90vw;
+	}
+	
+	.unitime-ApproveDialog .unitime-MainTable .table-cell {
+		max-width: 75vw;
+	}
+	
+	.gwt-DialogBox .unitime-MainTable .table-row {
+		width: inherit;
+	}
+	
+	.unitime-ApproveDialog .unitime-MainTable .label-cell {
+		white-space: normal;
+		max-width: 14vw;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+	
+	.unitime-ApproveDialog .unitime-MainTable .widget-cell {
+		max-width: 75vw;
+	}
+	
+	.unitime-ApproveDialog .standard-notes .gwt-ListBox {
+		width: 75vw;
+	}
+	
+	.unitime-StandardNotesBox .gwt-ListBox {
+		width: 90vw;	
+	}
+	
+	.unitime-RoomsPanel .scroll {
+		width: 99vw;
+	}
+	
+	.unitime-RoomDetail .map {
+		width: 100%;
+	}
+	
+	.unitime-RoomEdit .map {
+		width: 99vw;
+		max-width: 600px;
+	}
+	
+	.unitime-RoomEdit .groups .group {
+		width: 25vw;
+		min-width: 150px;
+	}
+	
+	.unitime-RoomEdit .features .feature {
+		width: 25vw;
+		min-width: 150px;
+	}
+	
+	.unitime-RoomEdit .exams .exam {
+		width: 37vw; 
+		min-width: 300px;
+	}
+	
+	.unitime-ScrollTable {
+		min-width: 100%;
+		width: calc(99vw - 8px);
+	}
+	
+	.unitime-ScrollTableCell {
+		width: 80vw;
+	}
+	
+	.unitime-LegacyWebTable {
+		min-width: 100%;
+		width: calc(100vw - 8px);
+	}
+	
+	.unitime-CurriculumProjectionRulesDialog .unitime-ScrollTable {
+		min-width: inherit;
+		width: 80vw;
+	}
+	
+	.unitime-FilterPanel .filter-left .unitime-FilterBox {
+		width: calc(99vw - 8px);
+	}
+	
+	.unitime-ScheduleStatus {
+		width: calc(100vw - 4px);
+	}
+}
+
+@media all and (max-width: 400px) {
+	.unitime-FilterBoxPopup .value {
+		width: 90%;
+	}
+}

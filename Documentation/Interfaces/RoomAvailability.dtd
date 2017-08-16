@@ -1,0 +1,65 @@
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+
+<!ELEMENT parameters ( year, term, campus, beginDate, endDate, startTime, endTime ) >
+<!ATTLIST parameters created CDATA #REQUIRED >
+
+<!ELEMENT year EMPTY >
+<!ATTLIST year value CDATA #REQUIRED >
+
+<!ELEMENT term EMPTY >
+<!ATTLIST term value CDATA #REQUIRED >
+
+<!ELEMENT campus EMPTY >
+<!ATTLIST campus value CDATA #REQUIRED >
+
+<!ELEMENT beginDate EMPTY >
+<!ATTLIST beginDate value CDATA #REQUIRED >
+
+<!ELEMENT endDate EMPTY >
+<!ATTLIST endDate value CDATA #REQUIRED >
+
+<!ELEMENT startTime EMPTY >
+<!ATTLIST startTime value CDATA #REQUIRED >
+
+<!ELEMENT endTime EMPTY >
+<!ATTLIST endTime value CDATA #REQUIRED >
+
+<!ELEMENT availability ( room* ) >
+<!ATTLIST availability created CDATA #REQUIRED >
+<!ATTLIST availability dateFormat CDATA #REQUIRED >
+<!ATTLIST availability timeFormat CDATA #REQUIRED >
+
+<!ELEMENT room ( event* ) >
+<!ATTLIST room externalId CDATA #IMPLIED >
+<!ATTLIST room building CDATA #REQUIRED >
+<!ATTLIST room roomNbr CDATA #REQUIRED >
+
+<!ELEMENT event EMPTY >
+<!ATTLIST event name CDATA #REQUIRED >
+<!ATTLIST event type CDATA #REQUIRED >
+<!ATTLIST event date CDATA #REQUIRED >
+<!ATTLIST event startTime CDATA #REQUIRED >
+<!ATTLIST event endTime CDATA #REQUIRED >
+
+<!ATTLIST sessionDates examBegin CDATA #IMPLIED >
+<!ATTLIST sessionDates eventBegin CDATA #IMPLIED >
+<!ATTLIST sessionDates eventEnd CDATA #IMPLIED >
+

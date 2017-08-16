@@ -1,0 +1,237 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration
+    PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd" >
+
+<!-- 
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+ -->
+
+<hibernate-configuration>
+<session-factory name="unitime:hibernate/SessionFactory">
+
+	<!-- MySQL Configuration -->
+	<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+	<property name="connection.url">jdbc:mysql://localhost:3306/timetable</property>
+	<property name="connection.username">timetable</property>
+	<property name="connection.password">unitime</property>
+	<property name="connection.autocommit">true</property>
+	<property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+	<property name="tmtbl.uniqueid.generator">org.hibernate.id.TableHiLoGenerator</property>
+	<property name="hibernate.connection.useUnicode">true</property>
+	<property name="hibernate.connection.characterEncoding">utf8</property>
+	<!-- End of MySQL Configuration -->
+	
+	<!-- Oracle Configuration -->
+	<!-- 
+	<property name="connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+	<property name="connection.url">jdbc:oracle:thin:@localhost:1521:xe</property>
+	<property name="connection.username">timetable</property>
+	<property name="connection.password">unitime</property>
+	<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+	<property name="tmtbl.uniqueid.generator">org.hibernate.id.SequenceGenerator</property>
+	-->
+	<!-- End of Oracle Configuration -->
+	
+	<!-- Connect database using Apache DBCP -->
+	<property name="hibernate.connection.provider_class">org.unitime.commons.hibernate.connection.LoggingDBCPConnectionProvider</property>
+	<property name="hibernate.dbcp.maxIdle">5</property>
+	<property name="hibernate.dbcp.maxActive">20</property>
+	<property name="hibernate.dbcp.whenExhaustedAction">1</property>
+	<property name="hibernate.dbcp.maxWait">180000</property>
+	<property name="hibernate.dbcp.testOnBorrow">true</property>
+	<property name="hibernate.dbcp.testOnReturn">false</property>
+	<property name="hibernate.dbcp.validationQuery">select 1 from dual</property>
+	<!-- End of connect database using Apache DBCP -->
+
+	<!-- If true, class LobCleanUpInterceptor will print some audit information -->
+	<property name="tmtbl.hibernate.audit">false</property>
+
+	<property name="default_schema">timetable</property>
+
+	<property name="show_sql">false</property>
+
+	<!-- Generate comments inside the SQL, for easier debugging, defaults -->
+	<property name="hibernate.use_sql_comments">true</property>
+
+	<!-- 
+		Set a maximum "depth" for the outer join fetch tree for single-ended 
+		associations (one-to-one, many-to-one) 
+	-->
+	<property name="hibernate.max_fetch_depth">2</property>
+
+	<property name="hibernate.jdbc.fetch_size">1000</property>
+
+	<property name="hibernate.jdbc.batch_size">20</property>
+
+	<property name="hibernate.connection.release_mode">after_transaction</property>
+
+	<property name="hibernate.default_batch_fetch_size">100</property>
+
+	<property name="hibernate.current_session_context_class">managed</property>
+
+	<!-- Use Second Level Cache -->
+	<property name="hibernate.cache.use_second_level_cache">true</property>
+	
+	<!-- Cache Provider - EhCache -->
+	<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+	
+	<!-- Cache Provider - Infinispan -->
+	<!-- 
+	<property name="hibernate.cache.region.factory_class">org.hibernate.cache.infinispan.InfinispanRegionFactory</property>
+	<property name="hibernate.transaction.factory_class">org.hibernate.engine.transaction.internal.jta.JtaTransactionFactory</property>
+	<property name="hibernate.transaction.jta.platform">org.hibernate.service.jta.platform.internal.JBossStandAloneJtaPlatform</property>
+	<property name="hibernate.cache.infinispan.cfg">hibernate-infinispan.xml</property>
+	 -->
+
+	<!-- Keep the cache entries in a more human-understandable format -->
+	<property name="hibernate.cache.use_structured_entries">true</property>
+
+	<!-- Enable the query cache, individual queries still have to be set cachable -->
+	<property name="hibernate.cache.use_query_cache">true</property>
+
+	<!-- 
+		Force Hibernate to order SQL updates by the primary key value of the items being updates. 
+		This will result in fewer transaction deadlocks in highly concurrent systems.		
+	-->
+	<property name="hibernate.order_updates">true</property>
+
+	<!-- Collect statistics useful for performance tuning -->
+	<property name="hibernate.generate_statistics">false</property>
+
+	<!-- Enables use of CGLIB instead of runtime reflection (useful when troubleshooting) -->
+	<!-- property name="hibernate.cglib.use_reflection_optimizer">
+		true
+		</property -->
+		
+	<property name="SetBigStringTryClob">true</property>
+	<!-- Mapping files -->
+	<mapping resource="org/unitime/timetable/model/Building.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/Roles.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/SubjectArea.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/RefTableEntry.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/Room.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/RoomFeature.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/RoomGroup.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/RoomDept.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/CourseOffering.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/InstructionalOffering.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/InstrOfferingConfig.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/TimePattern.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/PreferenceLevel.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/Preference.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/DistributionObject.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/PreferenceGroup.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/ClassInstructor.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/SolverParameterDef.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/ItypeDesc.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/Settings.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/ManagerSettings.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/TimetableManager.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/ManagerRole.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/SolverParameter.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/SolverParameterGroup.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/SolverPredefinedSetting.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/SolverInfoDef.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/SolverInfo.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/Solution.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/Assignment.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/StudentEnrollment.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/JointEnrollment.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/UserData.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/DatePattern.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/SolverGroup.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/CourseCreditUnitConfig.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/AcademicArea.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/AcademicClassification.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/Staff.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/PosMajor.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/PosMinor.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/Reservation.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/StudentGroup.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/ApplicationConfig.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/History.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/AcademicAreaClassification.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/CourseDemand.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/CourseRequest.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/FreeTime.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/LastLikeCourseDemand.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/Student.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/StudentAccomodation.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/StudentClassEnrollment.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/StudentEnrollmentMessage.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/StudentSectHistory.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/WaitList.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/SectioningInfo.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/CourseRequestOption.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/ExactTimeMins.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/User.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/ChangeLog.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/ClassWaitList.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/CourseCatalog.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/CourseSubpartCredit.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/ExternalBuilding.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/ExternalRoom.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/ExternalRoomDepartment.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/ExternalRoomFeature.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/ExamPeriod.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/ExamOwner.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/ExamConflict.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/StandardEventNote.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/EventNote.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/EventContact.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/Event.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/RelatedCourseInfo.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/Meeting.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/RoomTypeOption.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/SponsoringOrganization.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/Curriculum.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/StudentSectQueue.hbm.xml" />
+	<mapping resource="org/unitime/timetable/model/QueryLog.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/OnlineSectioningLog.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/SavedHQL.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/EventDateMapping.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/MessageLog.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/Script.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/ClusterDiscovery.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/ExamStatus.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/HashedQuery.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/InstructorAttribute.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/OfferingCoordinator.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/TeachingClassRequest.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/ExternalDepartmentStatusType.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PointInTimeData.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PitInstructionalOffering.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PitCourseOffering.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PitInstrOfferingConfig.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PitSchedulingSubpart.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PitClass.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PitStudent.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PitStudentClassEnrollment.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PitStudentAcadAreaMajorClassification.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PitStudentAcadAreaMinorClassification.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PitDepartmentalInstructor.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PitClassInstructor.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PitClassEvent.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PitClassMeeting.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PitClassMeetingUtilPeriod.hbm.xml"/>
+	<mapping resource="org/unitime/timetable/model/PitOfferingCoordinator.hbm.xml"/>
+	
+</session-factory>
+</hibernate-configuration>

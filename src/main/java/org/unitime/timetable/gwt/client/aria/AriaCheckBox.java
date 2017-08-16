@@ -1,0 +1,57 @@
+/*
+ * Licensed to The Apereo Foundation under one or more contributor license
+ * agreements. See the NOTICE file distributed with this work for
+ * additional information regarding copyright ownership.
+ *
+ * The Apereo Foundation licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at:
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * 
+*/
+package org.unitime.timetable.gwt.client.aria;
+
+import com.google.gwt.aria.client.Id;
+import com.google.gwt.aria.client.Roles;
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.CheckBox;
+
+/**
+ * @author Tomas Muller
+ */
+public class AriaCheckBox extends CheckBox implements HasAriaLabel {
+	Element iAriaLabel;
+	
+	public AriaCheckBox() {
+		this(DOM.createInputCheck());
+	}
+	
+	public AriaCheckBox(Element elem) {
+		super(elem);
+		
+		iAriaLabel = DOM.createLabel();
+		iAriaLabel.setId(DOM.createUniqueId());
+		iAriaLabel.setClassName("unitime-AriaLabel");
+		DOM.appendChild(getElement(), iAriaLabel);
+		Roles.getCheckboxRole().setAriaLabelledbyProperty(elem, Id.of(iAriaLabel));
+	}
+	
+	@Override
+	public void setAriaLabel(String text) {
+		iAriaLabel.setInnerText(text == null ? "" : text);
+	}
+	
+	@Override
+	public String getAriaLabel() {
+		return iAriaLabel.getInnerText();
+	}
+}
